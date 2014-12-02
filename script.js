@@ -18,6 +18,9 @@ window.builder.App = function(){
   var bind_ui = function(){
     by_id('invoice_data').addEventListener('submit', process_form, false);
   };
+  var add_title = function(title){
+    document.getElementsByTagName('title')[0].innerHTML = title;
+  };
   var get_values = function(){
     var values = {};
     builder.input_names.forEach(function(name){
@@ -31,6 +34,7 @@ window.builder.App = function(){
   var add_vat = function(values){
     values.excl_vat_price = parseInt(values.excl_vat_price);
     values.incl_vat_price = values.excl_vat_price * 1.2;
+    values.vat_charged = values.excl_vat_price * 0.2;
     return values;
   };
   var render = function(values){
@@ -42,6 +46,7 @@ window.builder.App = function(){
   var process_form = function(event){
     event.preventDefault();
     var values = get_values();
+    add_title(values['invoice_id']);
     var vat_values = add_vat(values);
     render(vat_values);
     window.print();

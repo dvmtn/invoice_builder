@@ -8,16 +8,16 @@
   color:#333;
 }
 h1{
-  font-size:2em;
+  font-size:1.5em;
   margin-bottom:1em;
 }
-h1 span{
-  font-size:2em;
+h1 span,
+h2 span{
+  font-size:1em;
 }
 h2{
   font-size:1.5em;
   margin-bottom:1em;
-
 }
 article{
   background:#eeeeee;

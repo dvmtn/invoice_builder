@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>Developer Mountain - Invoice Builder</title>
+    <title><span class="company_name"></span> - Invoice Builder</title>
     <link href="style.css" rel="stylesheet">
     <script src="config.js"></script>
   </head>
   <body>
     <article id="input">
-      <h1>Developer Mountain - Invoice Builder</h1>
+      <h1><span class="company_name"></span> - Invoice Builder</h1>
       <form id="invoice_data">
         <input type="text" placeholder="Invoice ID" name="invoice_id" id="invoice_id_input">
         <input type="date" name="date" id="date_input">
@@ -19,7 +19,7 @@
       </form>
     </article>
     <article id="output">
-      <h1>Developer Mountain Invoice ref - <span id="invoice_id"></span></h1>
+      <h1><span class="company_name"></span> Invoice ref - <span id="invoice_id"></span></h1>
       <h2>Invoice date: <span id="date"></span></h2>
       <section>
         <h3>Your details</h3>
@@ -32,42 +32,33 @@
       </section>
       <section>
         <h3>Our details</h3>
-        <p>
-          Developer Mountain
-        </p>
-        <address>
-          Developer Mountain
-          CO LB Group
-          Suffolk House,
-          7 Hydra,
-          Orion Court,
-          Addison Way,
-          Gt Blakenham,
-          Suffolk,
-          IP6 0LW.
+        <p id="company_name"></p>
+        <address class="company_address">
         </address>
       </section>
-      <section>
-        <h3>The work</h3>
-        <p><span id="work_description"></span></p>
-        <p>Price excluding VAT: &pound;<span id="excl_vat_price"></span></p>
-        <p>VAT charged: &pound;<span id="vat_charged"></span></p>
-        <p>Price including VAT: &pound;<span id="incl_vat_price"></span></p>
-      </section>
-      <section>
-        <h3>Payment Details</h3>
-        <p>Bank: Barclays</p>
-        <p>Name: Developer Mountain Ltd</p>
-        <p>Sort code: <span id="bank_sort_code"></span></p>
-        <p>Account Number: <span id="bank_account_number"></span></p>
-      </section>
+      <div class='row'>
+        <section>
+          <h3>The work</h3>
+          <p><span id="work_description"></span></p>
+          <p>Price excluding VAT: &pound;<span id="excl_vat_price"></span></p>
+          <p>VAT charged: &pound;<span id="vat_charged"></span></p>
+          <p>Price including VAT: &pound;<span id="incl_vat_price"></span></p>
+        </section>
+        <section>
+          <h3>Payment details</h3>
+          <p>Bank: <span class="bank"></span></p>
+          <p>Name: <span class="company_name"></span></p>
+          <p>Sort code: <span class="bank_sort_code"></span></p>
+          <p>Account Number: <span class="bank_account_number"></span></p>
+        </section>
+      </div>
       <section>
         <h3>Legal info</h3>
-        <p>Payments are to be made within 30 days.</p>
-        <p>Anders Fisher and Adam Whittingham are both directors of Developer Mountain ltd.</p>
-        <p>Company no: <span id="comapny_number"></span></p>
-        <p>VAT no: <span id="comapny_vat_number"></span></p>
-        <p>Date of incorporation: <span id="company_incorporation_date"></span></p>
+        <p>Payments are to be made within <span class="payment_days"></span> days.</p>
+        <p>The directors of <span class="company_name"></span> are <span class="company_directors"></span></p>
+        <p>Company no: <span class="company_number"></span></p>
+        <p>VAT no: <span class="comapny_vat_number"></span></p>
+        <p>Date of incorporation: <span class="company_incorporation_date"></span></p>
       </section>
     </article>
     <script src="script.js"></script>

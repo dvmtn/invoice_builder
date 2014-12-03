@@ -47,19 +47,19 @@ section{
   border:1px solid #ccc;
   margin-bottom:2em;
   border-radius:2px;
-  font-size:16px;
-  min-height: 14em;
+  min-height: 4em;
 }
 .row{
-  font-size: 0;
+  display: table;
+  width:100%;
+  margin-bottom:2em;
 }
 .row section{
-  display:inline-block;
-  vertical-align:top;
+  display: table-cell;
   width: 49%;
 }
-.row section:first-child{
-  margin-right:2%;
+.row section:last-child{
+  border-left: 2%;
 }
 section
 h3{
@@ -67,7 +67,7 @@ h3{
   margin-bottom:1em;
 }
 #output{
-  /*display:none;*/
+  display:none;
 }
 @media print {
   article{

@@ -3,6 +3,7 @@
   <head>
     <title>Developer Mountain - Invoice Builder</title>
     <link href="style.css" rel="stylesheet">
+    <script src="config.js"></script>
   </head>
   <body>
     <article id="input">
@@ -49,15 +50,24 @@
       <section>
         <h3>The work</h3>
         <p><span id="work_description"></span></p>
-        <p>price excluding VAT: <span id="excl_vat_price"></span></p>
-        <p>price including VAT: <span id="incl_vat_price"></span></p>
+        <p>Price excluding VAT: &pound;<span id="excl_vat_price"></span></p>
+        <p>VAT charged: &pound;<span id="vat_charged"></span></p>
+        <p>Price including VAT: &pound;<span id="incl_vat_price"></span></p>
+      </section>
+      <section>
+        <h3>Payment Details</h3>
+        <p>Bank: Barclays</p>
+        <p>Name: Developer Mountain Ltd</p>
+        <p>Sort code: <span id="bank_sort_code"></span></p>
+        <p>Account Number: <span id="bank_account_number"></span></p>
       </section>
       <section>
         <h3>Legal info</h3>
         <p>Payments are to be made within 30 days.</p>
-        <p>Anders Fisher and Adam Whittingham are both directors od Developer Mountain ltd.</p>
-        <p>Company no: 09288865</p>
-        <p>Date of incorporation: 30/10/14</p>
+        <p>Anders Fisher and Adam Whittingham are both directors of Developer Mountain ltd.</p>
+        <p>Company no: <span id="comapny_number"></span></p>
+        <p>VAT no: <span id="comapny_vat_number"></span></p>
+        <p>Date of incorporation: <span id="company_incorporation_date"></span></p>
       </section>
     </article>
     <script src="script.js"></script>

@@ -20,7 +20,7 @@ h2 span{
 }
 h2{
   font-size:1.5em;
-  margin-bottom:1em;
+  margin-bottom:0.5em;
 }
 article{
   background:#eeeeee;
@@ -43,16 +43,16 @@ textarea{
   height:14em;
 }
 section{
-  padding: 2em;
+  padding: 1.5em;
   border:1px solid #ccc;
-  margin-bottom:2em;
+  margin-bottom:1.5em;
   border-radius:2px;
   min-height: 4em;
 }
 .row{
   display: table;
   width:100%;
-  margin-bottom:2em;
+  margin-bottom:1.5em;
 }
 .row section{
   display: table-cell;
@@ -61,10 +61,17 @@ section{
 .row section:last-child{
   border-left: 2%;
 }
+.right{
+  text-align:right;
+}
+img#logo{
+  display:none;
+  max-width:50%;
+}
 section
 h3{
   font-size:1.2em;
-  margin-bottom:1em;
+  margin-bottom:0.5em;
 }
 #output{
   display:none;

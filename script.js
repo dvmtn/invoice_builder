@@ -37,8 +37,20 @@ window.builder.App = function(){
           el.innerHTML = value;
         }
       }else{
-        alert("Cannot find id \'"+ id +"\' to insert data into. Check the key name in config.js");
+        if(info === 'logo_src'){
+          insert_logo(value);
+        }else{
+          alert("Cannot find id \'"+ id +"\' to insert data into. Check the key name in config.js");
+        }
       }
+    }
+  };
+
+  var insert_logo = function(src){
+    if(src){
+      var logo = document.getElementById('logo');
+      logo.style.display = 'inline-block';
+      logo.setAttribute('src', src);
     }
   };
 

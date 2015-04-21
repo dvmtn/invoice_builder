@@ -8,5 +8,6 @@ window.config = {
   "company_incorporation_date":'incorporation date',
   "company_directors": 'Name One and Name Two',
   "company_address": ["line one", "line two"],
-  "payment_days": 14
+  "payment_days": 14,
+  "logo_src": "logo.png"
 };

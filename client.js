@@ -1,3 +1,19 @@
+var pdf = require('html-pdf');
+var remote = require('remote'); 
+var dialog = remote.require('dialog'); 
+var print_to_pdf = function(filename, html){
+  dialog.showSaveDialog({
+    defaultPath: window.config.invoice_directory + filename,
+    filters: [
+      { name: 'Documents', extensions: ['pdf'] },
+    ]
+  }, function(filename){
+    pdf.create(html).toFile(filename,function(err, res){
+      console.log(res.filename);
+    });
+  });
+};
+
 window.builder = {
   input_names: [
     'invoice_id',
@@ -24,9 +40,9 @@ window.builder.App = function(){
   };
 
   var insert_secret_details = function(){
-    var config = window.config;
-    for(var info in config){
-      var value = config[info];
+    var fields = window.config.fields;
+    for(var info in fields){
+      var value = fields[info];
       var elements = document.getElementsByClassName(info);
       if(elements.length > 0){
         for(var i=0, l=elements.length; i<l; i++){
@@ -40,7 +56,7 @@ window.builder.App = function(){
         if(info === 'logo_src'){
           insert_logo(value);
         }else{
-          alert("Cannot find id \'"+ id +"\' to insert data into. Check the key name in config.js");
+          alert("Cannot find field \'"+ info +"\' to insert data into. Check the key name in config.js");
         }
       }
     }
@@ -90,7 +106,8 @@ window.builder.App = function(){
     add_title(values.invoice_id);
     var vat_values = add_vat(values);
     render(vat_values);
-    window.print();
+    print_to_pdf(values.invoice_id + ".pdf", document.documentElement.innerHTML);
+    //window.print();
   };
   init();
 };

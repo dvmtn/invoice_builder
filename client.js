@@ -1,42 +1,41 @@
-var pdf = require('html-pdf');
-var remote = require('remote'); 
-var dialog = remote.require('dialog'); 
-var print_to_pdf = function(filename, html){
-  dialog.showSaveDialog({
-    defaultPath: window.config.invoice_directory + filename,
-    filters: [
-      { name: 'Documents', extensions: ['pdf'] },
-    ]
-  }, function(filename){
-    pdf.create(html).toFile(filename,function(err, res){
-      console.log(res.filename);
-    });
-  });
-};
+(function(){
+  var pdf = require('html-pdf');
+  var remote = require('remote'); 
+  var dialog = remote.require('dialog'); 
 
-window.builder = {
-  input_names: [
+  var input_names = [
     'invoice_id',
     'date',
     'client_name',
     'client_address',
     'work_description',
-    'excl_vat_price'
-  ]
-};
+    'excl_vat_price',
+    'payment_days'
+  ];
 
-window.builder.App = function(){
-  var by_id = function(id){
-    return document.getElementById(id);
+  var print_to_pdf = function(filename, html){
+    dialog.showSaveDialog({
+      defaultPath: window.config.invoice_directory + filename,
+      filters: [
+        { name: 'Documents', extensions: ['pdf'] },
+      ]
+    }, function(filename){
+      if(filename){
+        pdf.create(html).toFile(filename,function(err, res){
+          console.log(res.filename);
+        });
+      }
+    });
   };
 
-  var init = function(){
-    bind_ui();
+  var by_id = function(name){
+    return document.getElementById(name);
   };
 
-  var bind_ui = function(){
-    by_id('invoice_data').addEventListener('submit', process_form, false);
-    insert_secret_details();
+  var prefill_days_select = function(){
+    by_id('payment_days_input').innerHTML = window.config.payment_day_options.map(function(number){
+      return "<option value='" + number + "'>pay within " + number + " days</option>";
+    }).join('\n');
   };
 
   var insert_secret_details = function(){
@@ -53,30 +52,22 @@ window.builder.App = function(){
           el.innerHTML = value;
         }
       }else{
-        if(info === 'logo_src'){
-          insert_logo(value);
-        }else{
-          alert("Cannot find field \'"+ info +"\' to insert data into. Check the key name in config.js");
-        }
+        alert("Cannot find field \'"+ info +"\' to insert data into. Check the key name in config.js");
       }
     }
   };
 
   var insert_logo = function(src){
     if(src){
-      var logo = document.getElementById('logo');
+      var logo = by_id('logo');
       logo.style.display = 'inline-block';
       logo.setAttribute('src', src);
     }
   };
 
-  var add_title = function(title){
-    document.getElementsByTagName('title')[0].innerHTML = title;
-  };
-
   var get_values = function(){
     var values = {};
-    builder.input_names.forEach(function(name){
+    input_names.forEach(function(name){
       values[name] = get_value(name);
     });
     return values;
@@ -96,22 +87,25 @@ window.builder.App = function(){
   var render = function(values){
     for(var name in values){
       var value = values[name];
+      console.log(name, value);
       by_id(name).innerHTML = value;
     }
+    insert_logo(window.config.logo);
   };
 
   var process_form = function(event){
     event.preventDefault();
-    var values = get_values();
-    add_title(values.invoice_id);
-    var vat_values = add_vat(values);
-    render(vat_values);
+    var values = add_vat(get_values());
+    render(values);
     print_to_pdf(values.invoice_id + ".pdf", document.documentElement.innerHTML);
-    //window.print();
   };
-  init();
-};
 
-window.addEventListener('load', function(){
-  window.app = new window.builder.App();
-}, false);
+  var init = function(){
+    prefill_days_select();
+    insert_secret_details();
+    by_id('invoice_data').addEventListener('submit', process_form, false);
+  };
+
+  window.addEventListener('load', init, false);
+
+})();

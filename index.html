@@ -12,6 +12,9 @@
         box-sizing:border-box;
         color:#333;
       }
+      html{
+        background:#eeeeee;
+      }
       h1{
         font-size:1.5em;
         margin-bottom:1em;
@@ -28,7 +31,6 @@
         margin-bottom:0.5em;
       }
       article{
-        background:#eeeeee;
         padding:1.5em;
       }
       form{
@@ -36,16 +38,20 @@
         margin: 0 auto;
       }
       input,
-      textarea{
+      textarea,
+      select{
         display:block;
         width:100%;
         padding:0.5em;
         border-radius:2px;
         border: none;
         margin-bottom:1.5em;
+        &:last-child{
+          margin-bottom:0;
+        }
       }
       textarea{
-        height:14em;
+        height:7em;
       }
       section{
         padding: 1.5em;
@@ -104,6 +110,7 @@
         <textarea placeholder="Client Address" name="client_address" id="client_address_input"></textarea>
         <textarea placeholder="Work Description" name="work_description" id="work_description_input"></textarea>
         <input type="text" placeholder="Price excl VAT" name="excl_vat_price" id="excl_vat_price_input">
+        <select name="payment_days_input" id="payment_days_input"></select>
         <input type="submit">
       </form>
     </article>
@@ -145,10 +152,10 @@
         </section>
         <section>
           <h3>Legal info</h3>
-          <p>Payments are to be made within <span class="payment_days"></span> days.</p>
+          <p>Payments are to be made within <span id="payment_days"></span> days.</p>
           <p>The directors of <span class="company_name"></span> are <span class="company_directors"></span></p>
           <p>Company no: <span class="company_number"></span></p>
-          <p>VAT no: <span class="comapny_vat_number"></span></p>
+          <p>VAT no: <span class="company_vat_number"></span></p>
           <p>Date of incorporation: <span class="company_incorporation_date"></span></p>
         </section>
       </div>

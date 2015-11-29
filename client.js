@@ -45,11 +45,7 @@
       var elements = document.getElementsByClassName(info);
       if(elements.length > 0){
         for(var i=0, l=elements.length; i<l; i++){
-          var el = elements[i];
-          if(value instanceof Array){
-            value = value.join(', ');
-          }
-          el.innerHTML = value;
+          elements[i].innerHTML = (value instanceof Array)? value.join(', ') : value;
         }
       }else{
         alert("Cannot find field \'"+ info +"\' to insert data into. Check the key name in config.js");
@@ -66,11 +62,10 @@
   };
 
   var get_values = function(){
-    var values = {};
-    input_names.forEach(function(name){
+    return input_names.reduce(function(values, name){
       values[name] = get_value(name);
-    });
-    return values;
+      return values;
+    }, {});
   };
 
   var get_value = function(name){
@@ -86,9 +81,7 @@
 
   var render = function(values){
     for(var name in values){
-      var value = values[name];
-      console.log(name, value);
-      by_id(name).innerHTML = value;
+      by_id(name).innerHTML = values[name];
     }
     insert_logo(window.config.logo);
   };

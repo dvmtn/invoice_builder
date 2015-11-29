@@ -88,7 +88,7 @@
         display:none;
       }
       @media print {
-        article{
+        html{
           background:white;
         }
         #input{
@@ -103,7 +103,7 @@
   <body>
     <article id="input">
       <h1><span class="company_name"></span> Invoice Builder</h1>
-      <form id="invoice_data">
+      <form action= "" id="invoice_data">
         <input type="text" placeholder="Invoice ID" name="invoice_id" id="invoice_id_input">
         <input type="date" name="date" id="date_input">
         <input type="text" placeholder="Client Name" name="client_name" id="client_name_input">
@@ -116,7 +116,7 @@
     </article>
     <article id="output">
       <p class="right">
-        <img id="logo" src="" alt="Developer Mountain" />
+        <img id="logo" alt="Developer Mountain" />
       </p>
       <h1><span class="company_name"></span> Invoice ref - <span id="invoice_id"></span></h1>
       <h2>Invoice date: <span id="date"></span></h2>

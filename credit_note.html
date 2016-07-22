@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Invoice Builder - credit note</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="config.js"></script>
+  </head>
+  <body>
+    <div id="credit_note"></div>
+    <article id="input">
+      <h1><span class="company_name"></span> Credit Note</h1>
+      <form id="invoice_data">
+        <input type="text" placeholder="Credit Note ID" name="invoice_id" id="invoice_id_input">
+        <input type="date" name="date" id="date_input">
+        <input type="text" placeholder="Client Name" name="client_name" id="client_name_input">
+        <textarea placeholder="Client Address" name="client_address" id="client_address_input"></textarea>
+        <textarea placeholder="Note Description" name="work_description" id="work_description_input"></textarea>
+        <input type="text" placeholder="Value excl VAT" name="excl_vat_price" id="excl_vat_price_input">
+        <input type="submit">
+      </form>
+    </article>
+    <article id="output">
+      <p class="right">
+        <img id="logo" src="" alt="Developer Mountain" />
+      </p>
+      <h1><span class="company_name"></span> Credit Note ref - <span id="invoice_id"></span></h1>
+      <h2>Credit date: <span id="date"></span></h2>
+      <section>
+        <h3>Your details</h3>
+        <p>
+          <span id="client_name"></span>
+        </p>
+        <address>
+          <span id="client_address"></span>
+        </address>
+      </section>
+      <section>
+        <h3>Our details</h3>
+        <p id="company_name"></p>
+        <address class="company_address">
+        </address>
+      </section>
+      <section>
+        <h3>Note description</h3>
+        <p><span id="work_description"></span></p>
+        <p>Value excluding VAT: &pound;<span id="excl_vat_price"></span></p>
+        <p>VAT charged: &pound;<span id="vat_charged"></span></p>
+        <p>Value including VAT: &pound;<span id="incl_vat_price"></span></p>
+      </section>
+      <div class='row'>
+        <section>
+          <h3>Legal info</h3>
+          <p>This credit note is for the purpose of clearing outstanding debts to <span class="company_name"></span> only, it cannot be used to claim any amount of work or money from <span class="company_name"></span>.</p>
+          <p>The directors of <span class="company_name"></span> are <span class="company_directors"></span></p>
+          <p>Company no: <span class="company_number"></span></p>
+          <p>VAT no: <span class="comapny_vat_number"></span></p>
+          <p>Date of incorporation: <span class="company_incorporation_date"></span></p>
+        </section>
+      </div>
+    </article>
+    <script src="script.js"></script>
+  </body>
+</html>

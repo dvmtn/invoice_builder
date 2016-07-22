@@ -40,7 +40,9 @@ window.builder.App = function(){
         if(info === 'logo_src'){
           insert_logo(value);
         }else{
-          alert("Cannot find id \'"+ id +"\' to insert data into. Check the key name in config.js");
+          if(!document.getElementById('credit_note')){
+            alert("Cannot find id \'"+ id +"\' to insert data into. Check the key name in config.js");
+          }
         }
       }
     }
